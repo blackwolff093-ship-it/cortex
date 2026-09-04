@@ -1,0 +1,70 @@
+{
+  "name": "cortex",
+  "productName": "CORTEX",
+  "version": "1.1.0",
+  "description": "An Obsidian-style vault your AI agents can read — and an orchestrator that lets a cheap model write while your expensive model only reviews.",
+  "type": "module",
+  "main": "dist-electron/main.cjs",
+  "scripts": {
+    "dev": "concurrently -k \"vite\" \"npm:watch:main\" \"npm:dev:electron\"",
+    "dev:electron": "wait-on tcp:5173 && VITE_DEV=1 electron .",
+    "watch:main": "npm run build:main -- --watch",
+    "build:main": "esbuild electron/main.ts electron/preload.ts electron/mcp-stdio.ts electron/ai-worker.ts --bundle --platform=node --format=cjs --external:electron --external:better-sqlite3 --external:node-llama-cpp --outdir=dist-electron --out-extension:.js=.cjs",
+    "build": "vite build && npm run build:main",
+    "app": "npm run build && electron .",
+    "dist": "npm run build && electron-builder --config electron-builder.yml",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.2.0",
+    "node-llama-cpp": "^3.20.0"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "@tailwindcss/vite": "^4.1.0",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/express": "^5.0.0",
+    "@types/node": "^24.0.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.5.0",
+    "concurrently": "^9.1.0",
+    "electron": "^44.1.0",
+    "electron-builder": "^26.0.0",
+    "esbuild": "^0.25.0",
+    "express": "^4.22.0",
+    "marked": "^15.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^4.1.0",
+    "typescript": "^5.8.0",
+    "vite": "^7.0.0",
+    "wait-on": "^8.0.0",
+    "zod": "^3.25.0"
+  },
+  "license": "MIT",
+  "keywords": [
+    "obsidian-alternative",
+    "mcp",
+    "model-context-protocol",
+    "ai-agents",
+    "agent-orchestration",
+    "token-optimization",
+    "cost-optimization",
+    "knowledge-base",
+    "second-brain",
+    "local-first",
+    "electron",
+    "sqlite",
+    "claude",
+    "llm"
+  ],
+  "homepage": "https://github.com/blackwolff093-ship-it/cortex#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blackwolff093-ship-it/cortex.git"
+  },
+  "bugs": {
+    "url": "https://github.com/blackwolff093-ship-it/cortex/issues"
+  }
+}

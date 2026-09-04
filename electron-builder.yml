@@ -1,0 +1,28 @@
+appId: app.cortex.memory
+productName: CORTEX
+directories:
+  output: release
+files:
+  - dist/**
+  - dist-electron/**
+  - package.json
+  - "!**/.cortex/**"
+asarUnpack:
+  - "**/*.node"
+  # node-llama-cpp ships .dylib/.so alongside its .node addon; the dynamic
+  # loader cannot read them from inside the asar, so unpack the whole tree.
+  - "node_modules/@node-llama-cpp/**"
+  - "node_modules/node-llama-cpp/**"
+extraResources:
+  - from: dist-electron/mcp-stdio.cjs
+    to: mcp-stdio.cjs
+  - from: seed
+    to: seed
+mac:
+  category: public.app-category.productivity
+  identity: null
+  target:
+    - target: dmg
+      arch: [arm64]
+    - target: zip
+      arch: [arm64]

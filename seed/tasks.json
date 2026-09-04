@@ -1,0 +1,9 @@
+[
+  { "text": "Add CSV export to the transactions screen", "assignee": "claude", "status": "TODO" },
+  { "text": "Wire the incoming/outgoing filter on the balance list", "assignee": null, "status": "TODO" },
+  { "text": "Estimate effort for biometric sign-in", "assignee": null, "status": "TODO" },
+  { "text": "Write the copy for sign-in error states", "assignee": "claude", "status": "IN PROGRESS" },
+  { "text": "Review the internal-transfer flow against the spec", "assignee": "chatgpt", "status": "REVIEW" },
+  { "text": "Lock scope for phase one", "assignee": "user", "status": "DONE" },
+  { "text": "Write the team protocol and assign roles", "assignee": "claude", "status": "DONE" }
+]

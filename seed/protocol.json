@@ -1,0 +1,28 @@
+[
+  { "kind": "template", "title": "Desktop app", "enabled": true, "position": 1,
+    "body": "---\ntitle: {{name}}\ntags: [project]\n---\n\n# {{name}}\n\n- **Type:** Desktop app\n- **Status:** 🆕 new\n- **Date:** {{date}}\n\n## 🧱 Stack\n- **Vite** + **React 18** + **TypeScript** + **TailwindCSS 4**\n- **Electron** + **electron-builder**\n- **better-sqlite3** (local database)\n\n## 🎯 Goal\n> Describe the project in a sentence…\n\n## ✅ Requirements\n- [ ] \n\n## 🗒️ Decisions\n- \n\nLinks: [[Team Protocol]]" },
+
+  { "kind": "template", "title": "Desktop + cloud (Supabase)", "enabled": true, "position": 2,
+    "body": "---\ntitle: {{name}}\ntags: [project]\n---\n\n# {{name}}\n\n- **Type:** Desktop + cloud\n- **Status:** 🆕 new\n- **Date:** {{date}}\n\n## 🧱 Stack\n- **Vite** + **React 18** + **TypeScript** + **TailwindCSS 4**\n- **Electron** + **electron-builder**\n- **better-sqlite3** (local) + **Supabase** (auth / sync / storage)\n\n## ☁️ Supabase setup\n- [ ] Create the project and take the `URL` + `anon key`\n- [ ] Enable Row Level Security on every table\n\n## 🎯 Goal\n> Describe the project…\n\n## ✅ Requirements\n- [ ] \n\nLinks: [[Team Protocol]]" },
+
+  { "kind": "template", "title": "Web app", "enabled": true, "position": 3,
+    "body": "---\ntitle: {{name}}\ntags: [project]\n---\n\n# {{name}}\n\n- **Type:** Web app\n- **Status:** 🆕 new\n- **Date:** {{date}}\n\n## 🧱 Stack\n- **Vite** + **React 18** + **TypeScript** + **TailwindCSS 4**\n- **Supabase** (database + auth)\n\n## 🎯 Goal\n> Describe the project…\n\n## ✅ Requirements\n- [ ] \n\nLinks: [[Team Protocol]]" },
+
+  { "kind": "template", "title": "Blank project", "enabled": true, "position": 4,
+    "body": "---\ntitle: {{name}}\ntags: [project]\n---\n\n# {{name}}\n\n- **Status:** 🆕 new\n- **Date:** {{date}}\n\n## 🎯 Goal\n> \n\n## ✅ Requirements\n- [ ] \n" },
+
+  { "kind": "rule", "title": "Default stack", "enabled": true, "position": 1,
+    "body": "Use this stack by default for a new app, so the user never has to repeat it:\n\n**Build and UI**\n- ✅ **Vite** — dev server and build\n- ✅ **React 18** — UI\n- ✅ **TypeScript**\n- ✅ **TailwindCSS 4** — styling\n\n**Desktop**\n- ✅ **Electron** + **electron-builder**\n\n**Data**\n- ✅ **better-sqlite3** — local (default)\n- ✅ **Supabase** — cloud (sync / auth / storage)\n\nIf the user asks for a different stack on a specific project, follow that request for that project only." },
+
+  { "kind": "rule", "title": "Project kickoff", "enabled": true, "position": 2,
+    "body": "Before writing any code:\n1. **Decide the app type** (desktop / web / tool) and confirm it with the user.\n2. Scaffold with the default stack above.\n3. If it needs cloud, auth or cross-device sync, set up **Supabase** first; otherwise stay on local SQLite.\n4. Write a project note in CORTEX (spec + status) and keep it updated as you work." },
+
+  { "kind": "rule", "title": "Team workflow", "enabled": true, "position": 3,
+    "body": "Fixed roles on this team:\n- **Planner** — plans, writes tasks, does the final review.\n- **Implementer** — writes the code.\n- **Reviewer** — an extra pair of eyes.\n\nAny agent that takes a task: move it to IN PROGRESS, log the start with `cortex_log`, write the output as a note, then move it to REVIEW. Always keep the board current so everyone can follow along." },
+
+  { "kind": "skill", "title": "Scaffold a new desktop app", "enabled": true, "position": 1,
+    "body": "Steps for an Electron + React + TS + Tailwind 4 app:\n1. `package.json` with `\"type\":\"module\"`, plus vite, @vitejs/plugin-react and @tailwindcss/vite.\n2. `electron/main.ts` + `preload.ts` bundled to CJS with esbuild (external: electron and the native modules only).\n3. `src/` for the UI (Vite on 5173 in dev), building into `dist/`.\n4. `electron-builder.yml` for a DMG, with `asarUnpack` for native modules (`**/*.node`).\n5. Scripts: `dev` (concurrently), `app` (build + electron), `dist` (build + electron-builder)." },
+
+  { "kind": "skill", "title": "Set up Supabase", "enabled": true, "position": 2,
+    "body": "When a project needs the cloud:\n1. Create a Supabase project and get the `URL` and `anon key`.\n2. Keep the keys in environment variables, never in the code.\n3. Use `@supabase/supabase-js` for auth, database and storage.\n4. For local-first apps keep SQLite as the source of truth and treat Supabase as a sync/backup layer, not the other way around.\n5. Enable Row Level Security on every table before shipping." }
+]
