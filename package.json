@@ -59,12 +59,12 @@
     "claude",
     "llm"
   ],
-  "homepage": "https://github.com/blackwolff093-ship-it/cortex#readme",
+  "homepage": "https://github.com/blackwolffdev/cortex#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/blackwolff093-ship-it/cortex.git"
+    "url": "https://github.com/blackwolffdev/cortex.git"
   },
   "bugs": {
-    "url": "https://github.com/blackwolff093-ship-it/cortex/issues"
+    "url": "https://github.com/blackwolffdev/cortex/issues"
   }
 }

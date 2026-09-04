@@ -104,7 +104,7 @@ criteria. Then you choose who implements it, and who reviews it.
 **Requirements:** macOS (Apple Silicon), Node.js 20+.
 
 ```bash
-git clone https://github.com/blackwolff093-ship-it/cortex.git
+git clone https://github.com/blackwolffdev/cortex.git
 cd cortex
 npm install
 npm run app
